@@ -1,31 +1,35 @@
 import logging
-import os
-from datetime import datetime
+from pathlib import Path
+from time import strftime
 
-# Create a log file name with the current timestamp
-log_filename = f"log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+# Generating a unique log filename with current time
+unique_log_name = f"applog_{strftime('%Y%m%d%H%M%S')}.txt"
 
-# Define the directory where logs will be stored
-log_directory = os.path.join(os.path.dirname(__file__), "application_logs")
+# Specifying a directory within the current working path for logs
+log_directory_path = Path(__file__).resolve().parent / "application_logs"
 
-# Ensure the directory exists; if not, create it
-os.makedirs(log_directory, exist_ok=True)
+# Ensuring the log directory exists
+log_directory_path.mkdir(parents=True, exist_ok=True)
 
-# Construct the full path for the log file
-full_log_path = os.path.join(log_directory, log_filename)
+# Full path for the log file
+log_file_full_path = log_directory_path / unique_log_name
 
-# Configure the logging
+# Setting up the logging configuration
 logging.basicConfig(
-    filename=full_log_path,
-    filemode='a',  # Append mode
-    format='[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S',
-    level=logging.INFO
+    filename=str(log_file_full_path),
+    level=logging.DEBUG,
+    format='%(asctime)s :: %(levelname)s :: %(name)s :: %(message)s',
+    datefmt='%d-%b-%y %H:%M:%S'
 )
 
-# Expose a custom log function for external use
-def custom_log(message, level=logging.INFO):
-    if level == logging.ERROR:
-        logging.error(message)
-    else:
-        logging.info(message)
+def log_info(message: str):
+    """Function to log informational messages."""
+    logging.info(message)
+
+def log_error(message: str):
+    """Function to log error messages."""
+    logging.error(message)
+
+def log_warning(message: str):
+    """Function to log warnings."""
+    logging.warning(message)
