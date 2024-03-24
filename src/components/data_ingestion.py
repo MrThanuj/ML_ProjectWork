@@ -1,7 +1,5 @@
 import os
 import sys
-
-from numpy import split
 from src.exception import CustomException
 from src.logger import logging
 import pandas as pd
@@ -28,7 +26,7 @@ class DataIngest:
     def start_ingestion(self):
         logging.info("Beginning the data ingestion process")
         try:
-            dataset = pd.read_csv('notebook\data\student_performance.csv')
+            dataset = pd.read_csv('notebook\data\stud.csv')
             logging.info('Dataset loaded into a pandas data frame')
 
             os.makedirs(os.path.dirname(self.config.path_to_training_data), exist_ok=True)
@@ -36,7 +34,7 @@ class DataIngest:
             dataset.to_csv(self.config.path_to_raw_data, index=False, header=True)
 
             logging.info("Splitting data into training and testing sets")
-            training_data, testing_data = split(dataset, test_size=0.2, random_state=42)
+            training_data, testing_data = train_test_split(dataset, test_size=0.2, random_state=42)
 
             training_data.to_csv(self.config.path_to_training_data, index=False, header=True)
             testing_data.to_csv(self.config.path_to_testing_data, index=False, header=True)
@@ -54,8 +52,8 @@ if __name__ == "__main__":
     ingest = DataIngest()
     path_to_train, path_to_test = ingest.start_ingestion()
 
-    preprocessing = DataPreprocessor()
-    train_matrix, test_matrix, _ = preprocessing.start_preprocessing(path_to_train, path_to_test)
+    data_transformation = DataPreprocessor()
+    train_matrix, test_matrix, _ = data_transformation.initiate_data_transformation(path_to_train, path_to_test)
 
     trainer = ModelTrainer()
     print(trainer.start_training(train_matrix, test_matrix))
