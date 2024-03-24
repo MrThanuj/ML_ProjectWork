@@ -20,12 +20,12 @@ from src.logger import logging
 from src.utils import save_object,evaluate_models
 
 @dataclass
-class ModelTrainerConfig:
+class ModelTrainingConfig:
     trained_model_file_path=os.path.join("artifacts","model.pkl")
 
 class ModelTrainer:
     def __init__(self):
-        self.model_trainer_config=ModelTrainerConfig()
+        self.model_trainer_config=ModelTrainingConfig()
 
 
     def initiate_model_trainer(self,train_array,test_array):
