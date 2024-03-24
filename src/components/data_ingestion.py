@@ -41,6 +41,10 @@ class DataIngest:
 
             logging.info("Data ingestion process completed")
 
+            # In the provided code snippet, there is no reference to a variable named `ret`. It seems
+            # like there might be a misunderstanding or missing context. If you can provide more
+            # information or specify where `ret` is used in the code, I would be happy to help clarify
+            # its purpose or functionality.
             return (
                 self.config.path_to_training_data,
                 self.config.path_to_testing_data
