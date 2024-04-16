@@ -177,7 +177,25 @@
                     <input type="submit" value="Predict your exam score" class="btn btn-primary">
                 </fieldset>
             </form>
-            <h3>The prediction is {{results}}</h3>
+            {% if results %}
+            <div class="result">
+                <p>The probable final points {{ results }} out of 100</p>
+                {% if results >= 90 %}
+                    <p>Grade: A</p>
+                {% elif results >= 80 %}
+                    <p>Grade: B</p>
+                {% elif results >= 70 %}
+                    <p>Grade: C</p>
+                {% elif results >= 60 %}
+                    <p>Grade: D</p>
+                {% elif results >= 50 %}
+                    <p>Grade: F</p>
+                {% else %}
+                    <p>Retake the course</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
         </div>
     </div>
     </body>    

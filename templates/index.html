@@ -1,1 +1,130 @@
-<h1>Welcome to the home page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        /* Gradient Background */
+        background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
+        color: #e0e0e0; /* Light text for contrast */
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        /* For a gradient header, you can uncomment this
+        background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d); 
+        */
+        background-color: #1c1c1c; /* Or keep a solid dark color for the header */
+        color: #ffffff;
+        padding: 10px 20px;
+        text-align: center;
+        font-size: 24px;
+        font-family: 'Montserrat', sans-serif;
+        border-bottom: 1px solid #333; /* Subtle border for a touch of depth */
+    }
+    .main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    h2 {
+        font-family: 'Montserrat', sans-serif;
+        color: #0d6efd; /* Bright color for titles to stand out */
+        margin-bottom: 0.5em;
+        font-weight: 700; /* bolder font for headings */
+    }
+
+    p {
+        font-size: 18px;
+        line-height: 1.6;
+        font-weight: 400; /* Regular font weight for body text */
+    }
+
+    .button {
+        font-family: 'Montserrat', sans-serif;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #0d6efd; /* Bright blue for the button to stand out */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        margin-top: 20px;
+        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        font-weight: 500; /* Medium font weight for the button text */
+    }
+
+    .button:hover {
+        background-color: #0a58ca; /* Darker blue on hover */
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+        from {
+            transform: translate3d(0, 40px, 0);
+            opacity: 0;
+        }
+        to {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes floatButton {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .container {
+        /* ... */
+        animation: fadeInUp 1s ease-out;
+    }
+
+    .button {
+        /* ... */
+        transition: transform 3.0s ease-in-out;
+    }
+
+    .button:hover {
+        transform: scale(1.05);
+        animation: floatButton 1.5s ease-in-out infinite;
+    }
+
+</style>
+</head>
+<body>
+<header>Unlock Your Academic Potential</header>
+<div class="main">
+    <div class="container">
+        <h2>Welcome to the Student Performance Predictor</h2>
+
+        <p>Discover how our Student Performance Predictor can transform your study patterns and improve your grades. Quick, personalized, and insightful - get ready for a smarter way to succeed.</p>
+        <a href="/predictdata" class="button">Predict My Performance</a>
+    </div>
+</div>
+</body>
+</html>
