@@ -6,7 +6,7 @@ from src.utils import load_object
 
 class CustomData:
     """
-    Prepares and structures raw input data for predictions.
+    Prepares and structure raw input data for predictions.
     """
     def __init__(self, gender, race_ethnicity, parental_level_of_education, lunch, test_preparation_course, reading_score, writing_score):
         self.input_details = {
